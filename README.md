@@ -1,4 +1,4 @@
-<img src="https://cloud.githubusercontent.com/assets/13212227/26788306/c2e12516-4a47-11e7-913f-7550f70c13e0.png" align="center">
+<img src="https://cloud.githubusercontent.com/assets/13212227/26788479/40adde4e-4a48-11e7-83f9-b5e4d02c5470.png">
 
 # vais
 Vulnerability Analysis In SWF
