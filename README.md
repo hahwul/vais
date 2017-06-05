@@ -2,7 +2,7 @@
 
 ## 1. VAIS?
 Vulnerability Analysis In SWF<br>
-Scanning SWF& & Actionscript <br>
+Find dangerous settings in the SWF and possible vulnerabilities in ActionScript. <br>
 <br>
  
 ## 2. How to Install?
