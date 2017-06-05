@@ -3,7 +3,7 @@ class OptparseVAIS
     # The options specified on the command line will be collected in *options*.
     # We set default values here.
     options = OpenStruct.new
-    options.file = true
+    options.update = false
 
     opt_parser = OptionParser.new do |opts|
       opts.banner = "Usage: vais.rb [swf file path][options]"
@@ -11,8 +11,8 @@ class OptparseVAIS
       opts.separator ""
       opts.separator "Specific options:"
      
-      opts.on("-u", "--url", "URL Mode") do
-        options.file = false
+      opts.on("-u", "--update", "update") do
+        options.update = true
       end
 
       opts.separator ""
