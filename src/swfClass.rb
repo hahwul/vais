@@ -9,6 +9,11 @@ class SWFObject
 		@swf_actionscript = Array.new()
 		@swf_vuln = []  #  level | vulnerability | file | line | code data
 		@swf_loaderInfo = []   # file | line | code data
+		
+		@swf_report_path=""
+		@swf_report_templatet=File.dirname(__FILE__)+"/rtemplate_t.html"
+		@swf_report_templateb=File.dirname(__FILE__)+"/rtemplate_b.html"
+		@swf_report_data=""
 	end
 	def decompileSWF # Decompile SWF File [ flash > actionscript ] 
 	# ffdec -export script ./asd simpleCalendar.swf
@@ -146,8 +151,8 @@ class SWFObject
 	end
 	
 	def genReport # Generate Report file
-		@swf_report = "./report_"+@swf+"."+(@time.to_i).to_s
-		system("touch "+@swf_report)
+		@swf_report_path = "./report_"+@swf+"."+(@time.to_i).to_s+".html"
+		#system("touch "+@swf_report)
 	end
 	
 	def scan()
