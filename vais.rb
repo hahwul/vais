@@ -9,6 +9,7 @@ require File.dirname(__FILE__)+"/src/optparse.rb"  #Include OptParse
 require File.dirname(__FILE__)+"/src/swfClass.rb"  #Include SWFClass
 
 def banner
+	puts ""
 	puts "code by hahwul [www.hahwul.com]."
 end
 
