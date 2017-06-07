@@ -11,8 +11,12 @@ class SWFObject
 		@swf_loaderInfo = []   # file | line | code data
 		
 		@swf_report_path=""
-		@swf_report_templatet=File.dirname(__FILE__)+"/rtemplate_t.html"
-		@swf_report_templateb=File.dirname(__FILE__)+"/rtemplate_b.html"
+		@swf_report_template=""
+		#Set Report Template
+		rf = File.open(File.dirname(__FILE__)+"/rtemplate.html", "r")
+			rf.each_line do | line |
+				@swf_report_template = @swf_report_template+line
+			end
 		@swf_report_data=""
 	end
 	def decompileSWF # Decompile SWF File [ flash > actionscript ] 
@@ -30,6 +34,9 @@ class SWFObject
 	system($path_swfdump+" -D "+@swf+" > "+@swf_workspace+"/source/dump")  ## ffdec
 	puts " > Success"
 	end
+	
+	# swfstrings
+	
 	
 	def findLoaderInfo
 		#ActionScript2 
@@ -62,52 +69,52 @@ class SWFObject
 		for count in 0 ... @swf_actionscript.size
 			if(@swf_actionscript[count].index("loadVariables(") != nil)
 				sindex = @swf_actionscript[count].index("loadVariables(")
-				@swf_vuln.push(2,"vuln func - loadVariables()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - loadVariables()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("loadMovie(") != nil)
 				sindex = @swf_actionscript[count].index("loadMovie(")
-				@swf_vuln.push(2,"vuln func - loadMovie()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - loadMovie()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("getURL(") != nil)
 				sindex = @swf_actionscript[count].index("getURL(")
-				@swf_vuln.push(2,"vuln func - getURL()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - getURL()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("loadMovieNum(") != nil)
 				sindex = @swf_actionscript[count].index("loadMovieNum(")
-				@swf_vuln.push(2,"vuln func - loadMovieNum()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - loadMovieNum()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("FScrollPane.loadScrollContent(") != nil)
 				sindex = @swf_actionscript[count].index("FScrollPane.loadScrollContent(")
-				@swf_vuln.push(2,"vuln func - FScrollPane.loadScrollContent()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - FScrollPane.loadScrollContent()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("LoadVars.load(") != nil)
 				sindex = @swf_actionscript[count].index("LoadVars.load(")
-				@swf_vuln.push(2,"vuln func - LoadVars.load()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - LoadVars.load()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("LoadVars.send(") != nil)
 				sindex = @swf_actionscript[count].index("LoadVars.send(")
-				@swf_vuln.push(2,"vuln func - LoadVars.send()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - LoadVars.send()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("XML.load(") != nil)
 				sindex = @swf_actionscript[count].index("XML.load(")
-				@swf_vuln.push(2,"vuln func - XML.load()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - XML.load()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("Sound.loadSound(") != nil)
 				sindex = @swf_actionscript[count].index("Sound.loadSound(")
-				@swf_vuln.push(2,"vuln func - Sound.loadSound()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - Sound.loadSound()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 			if(@swf_actionscript[count].index("NetStream.play(") != nil)
 				sindex = @swf_actionscript[count].index("NetStream.play(")
-				@swf_vuln.push(2,"vuln func - NetStream.play()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([2,"vuln func - NetStream.play()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 		end
@@ -118,7 +125,7 @@ class SWFObject
 		for count in 0 ... @swf_actionscript.size
 			if(@swf_actionscript[count].index("ExternalInterface.call(") != nil)
 				sindex = @swf_actionscript[count].index("ExternalInterface.call(")
-				@swf_vuln.push(3,"use ExternalInterface.call()",[@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
+				@swf_vuln.push([3,"use ExternalInterface.call()",@aslist[count],sindex,@swf_actionscript[count][sindex-20..sindex+500]])
 				i=i+1
 			end
 		end
@@ -147,12 +154,50 @@ class SWFObject
 		findLoaderInfo()
 		findVulnFunction()
 		findExternalInterface
-
 	end
 	
 	def genReport # Generate Report file
 		@swf_report_path = "./report_"+@swf+"."+(@time.to_i).to_s+".html"
-		#system("touch "+@swf_report)
+		tempData = @swf_report_template
+		puts " > Loaded report template"
+		
+		
+		### Security Logic Area!!!
+		
+		
+		######################
+		puts " > Generating.."
+		# Set r_info
+		r_info = "<font size=5>Application Name: </font><font size=5 color=green>[ #{@swf} ]</font><br><br><font size=4>#loaderInfo</font><table><tr><td>AS File</td><td align=center>Line</td><td>Code</td></tr>"
+		for temp in @swf_loaderInfo
+			r_info = r_info+"<tr><td>#{temp[0]}</td><td>#{temp[1]}</td><td><pre><code>#{temp[2]}</code></pre></td></tr>"
+		end
+		r_info = r_info+"</table>"
+		
+		# Set r_vuln
+		r_vuln = "<table><tr><td align=center>Level</td><td>Vulnerability</td><td>AS File</td><td align=center>Line</td><td>Code</td></tr>"
+		for temp in @swf_vuln
+			r_vuln = r_vuln+"<tr><td>#{temp[0]}</td><td>#{temp[1]}</td><td>#{temp[2]}</td><td>#{temp[3]}</td><td><pre><code>#{temp[4]}</code></pre></td></tr>"
+		end
+		r_vuln = r_vuln+"</table>"
+		
+		r_dump = "<pre>"+@swf_dump="</pre>"
+		r_istr=""
+		r_html=""
+		
+		tempData = tempData.gsub("{#!info}",r_info)
+		tempData = tempData.gsub("{#!vuln}",r_vuln)
+		tempData = tempData.gsub("{#!dump}",r_dump)
+		tempData = tempData.gsub("{#!istr}",r_istr)
+		tempData = tempData.gsub("{#!html}",r_html)
+		
+		rFile = File.new(@swf_report_path, 'w')
+		if rFile
+			puts rFile.syswrite(tempData)
+			puts " > Report Writing.."
+		else
+			puts " > Report Error.."
+		end
 	end
 	
 	def scan()
