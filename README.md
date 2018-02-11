@@ -27,3 +27,5 @@ Contact hahwul@gmail.com
 
 ## 5. Screen shot
 
+## 6. Donate
+[![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=GT4RPBEQ2SM78)
