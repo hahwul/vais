@@ -1,6 +1,7 @@
 <img src="https://cloud.githubusercontent.com/assets/13212227/26788479/40adde4e-4a48-11e7-83f9-b5e4d02c5470.png">
 
 [![MIT License](https://img.shields.io/badge/license-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Rawsec's CyberSecurity Inventory](https://inventory.rawsec.ml/img/badges/Rawsec-inventoried-FF5050_flat.svg)](https://inventory.rawsec.ml/tools.html#Vais)
 
 ## 1. VAIS?
 Vulnerability Analysis In SWF<br>
